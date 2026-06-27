@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skin AI Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <h1>🧬 Skin Cancer AI Detector</h1>
+    <p class="subtitle">Upload an image to analyze skin condition</p>
+
+    <form method="POST" enctype="multipart/form-data" id="upload-form">
+        
+        <div class="upload-box" id="drop-area">
+            <p>Drag & Drop Image or Click</p>
+            <input type="file" name="file" id="fileInput" required>
+        </div>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if img_path %}
+    <div class="result-card">
+
+        <img src="{{ img_path }}" class="preview">
+
+        <h2>{{ prediction }}</h2>
+
+        <div class="confidence-bar">
+            <div style="width: {{ confidence }}%"></div>
+        </div>
+
+        <p>{{ confidence }}% confidence</p>
+
+    </div>
+    {% endif %}
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
